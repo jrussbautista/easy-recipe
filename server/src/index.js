@@ -1,5 +1,6 @@
 import { ApolloServer } from "apollo-server";
 import { resolvers, typeDefs } from "./graphql";
+import { connectDb } from "./database";
 
 const server = new ApolloServer({
   typeDefs,
@@ -7,6 +8,11 @@ const server = new ApolloServer({
   context: ({ req }) => ({ req }),
 });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+const start = async () => {
+  await connectDb();
+  server.listen().then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+  });
+};
+
+start();

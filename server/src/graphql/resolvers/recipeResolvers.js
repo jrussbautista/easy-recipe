@@ -1,5 +1,17 @@
+import { Recipe } from "../../models";
+
 export const recipeResolvers = {
   Query: {
-    recipes: () => "Recipe.Query",
+    recipes: async () => {
+      const total = await Recipe.countDocuments();
+      const recipes = await Recipe.find();
+
+      const data = {
+        total,
+        result: recipes,
+      };
+
+      return data;
+    },
   },
 };
