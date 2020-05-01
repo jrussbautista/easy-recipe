@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 
-const DB = `mongodb://localhost:27017/easy-recipe`;
-
 export const connectDb = async () => {
+  const DB =
+    process.env.NODE_ENV === "production"
+      ? process.env.DATABASE_LOCAL
+      : process.env.DATABASE_LOCAL;
+
   const conn = await mongoose.connect(DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
