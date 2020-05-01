@@ -1,6 +1,11 @@
 import { gql } from "apollo-server";
 
 export const recipeType = gql`
+  input RecipeInput {
+    limit: Int!
+    page: Int!
+  }
+
   type Recipe {
     id: ID!
     title: String!
@@ -14,6 +19,6 @@ export const recipeType = gql`
   }
 
   type Query {
-    recipes: Recipes!
+    recipes(input: RecipeInput): Recipes!
   }
 `;

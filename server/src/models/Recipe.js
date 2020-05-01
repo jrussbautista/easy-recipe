@@ -10,14 +10,11 @@ const RecipeSchema = mongoose.Schema({
   description: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   image: {
     type: String,
     required: true,
-    unique: true,
-    trim: true,
   },
 });
 
