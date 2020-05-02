@@ -18,7 +18,7 @@ export const recipeType = gql`
     result: [Recipe]!
   }
 
-  type Query {
+  extend type Query {
     recipes(input: RecipeInput): Recipes!
   }
 `;
