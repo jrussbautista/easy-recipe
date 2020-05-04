@@ -4,7 +4,6 @@ const RecipeSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   description: {
@@ -15,6 +14,12 @@ const RecipeSchema = mongoose.Schema({
   image: {
     type: String,
     required: true,
+  },
+  ingredients: [],
+  instructions: [],
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 
