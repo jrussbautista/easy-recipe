@@ -1,0 +1,35 @@
+.wrapper {
+  margin-bottom: 1rem;
+}
+
+.heading {
+  height: 2rem;
+  background-color: var(--color-dark-gray);
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.img {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  background-color: var(--color-dark-gray);
+}
+
+.info {
+  padding: 1rem;
+}
+
+.line {
+  height: 1.5rem;
+  background-color: var(--color-dark-gray);
+  margin-bottom: 0.5rem;
+}

@@ -1,10 +1,12 @@
 import React from "react";
 import RecipeItem from "./RecipeItem";
 
-const RecipeList = () => {
+const RecipeList = ({ recipes }) => {
   return (
     <div>
-      <RecipeItem />
+      {recipes.map((recipe) => (
+        <RecipeItem key={recipe.id} {...recipe} />
+      ))}
     </div>
   );
 };

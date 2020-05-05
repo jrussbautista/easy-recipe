@@ -3,6 +3,7 @@
   box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   overflow: hidden;
+  margin-bottom: 1.5rem;
 
   .imgWrapper {
     position: relative;
@@ -25,5 +26,6 @@
     font-size: 1.2rem;
     line-height: 1.5rem;
     height: 3rem;
+    margin-bottom: 0.5rem;
   }
 }

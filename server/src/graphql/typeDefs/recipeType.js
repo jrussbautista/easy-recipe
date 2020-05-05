@@ -1,11 +1,6 @@
 import { gql } from "apollo-server";
 
 export const recipeType = gql`
-  input RecipesInput {
-    limit: Int!
-    page: Int!
-  }
-
   input RecipeInput {
     title: String!
     description: String!
@@ -22,6 +17,8 @@ export const recipeType = gql`
     ingredients: [String!]!
     instructions: [String!]!
     author: User!
+    ratingsCount: Int!
+    likesCount: Int!
   }
 
   type Recipes {
@@ -30,7 +27,7 @@ export const recipeType = gql`
   }
 
   extend type Query {
-    recipes(input: RecipesInput): Recipes!
+    recipes(page: Int!, limit: Int!): Recipes!
     recipe(id: ID): Recipe!
   }
 

@@ -3,6 +3,7 @@
   --color-gray: #f5f5f5;
   --color-bg: var(--color-gray);
   --color-dark: #3d3d3d;
+  --color-dark-gray: #e4dcdc;
 }
 
 body {

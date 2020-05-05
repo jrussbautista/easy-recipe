@@ -4,9 +4,9 @@ import { ApolloError } from "apollo-server";
 
 export const recipeResolvers = {
   Query: {
-    recipes: async (root, { input }) => {
-      const page = input.page || 1;
-      const limit = input.limit || 5;
+    recipes: async (root, args) => {
+      const page = args.page || 1;
+      const limit = args.limit || 5;
 
       const total = await Recipe.countDocuments();
 

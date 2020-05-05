@@ -1,8 +1,9 @@
 import React from "react";
-import Hero from "./Hero";
+
+import Hero from "./homeHero/Hero";
 import styles from "./Home.module.scss";
-import HomeCategory from "./HomeCategory";
-import RecipeList from "../../components/RecipeList";
+import HomeCategory from "./homeCategory/HomeCategory";
+import HomeRecipes from "./homeRecipes/HomeRecipes";
 
 export const Home = () => {
   return (
@@ -11,8 +12,7 @@ export const Home = () => {
       <div className={styles.container}>
         <h2>Categories</h2>
         <HomeCategory />
-        <h2>Latest Recipes</h2>
-        <RecipeList />
+        <HomeRecipes />
       </div>
     </div>
   );
