@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  background-color: #fff;
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.06);
+  padding: 0 1rem;
+
+  .title {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .right {
+    flex: 1;
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  .btnHamburger {
+    background-color: transparent;
+    transform: rotate(180deg);
+    border: 1px solid transparent;
+  }
+
+  .btnHamburger svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.headerNav {
+  display: none;
+}

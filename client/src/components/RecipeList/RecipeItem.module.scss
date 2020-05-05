@@ -1,0 +1,29 @@
+.recipe {
+  background-color: #fff;
+  box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+
+  .imgWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+  }
+
+  .info {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    height: 3rem;
+  }
+}

@@ -1,0 +1,31 @@
+.category {
+  overflow: hidden;
+  margin: 0 -1rem;
+
+  .wrapper {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-right: 1rem;
+  }
+
+  .wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .list {
+    padding-left: 1rem;
+  }
+
+  .img {
+    width: 10rem;
+    height: 6rem;
+    background-size: contain;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+}
