@@ -2,9 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { RECIPE } from "../../lib/graphql/queries";
-import RecipeInfo from "./recipeInfo/RecipeInfo";
-import RecipeInfoList from "./recipeInfoList/RecipeInfoList";
-import RecipeSkeleton from "./recipeSkeleton";
+import RecipeInfo from "./RecipeInfo/RecipeInfo";
+import RecipeInfoList from "./RecipeInfoList/RecipeInfoList";
+import RecipeSkeleton from "./RecipeSkeleton";
 
 export const Recipe = () => {
   const { id } = useParams();

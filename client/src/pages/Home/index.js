@@ -1,9 +1,9 @@
 import React from "react";
 
-import Hero from "./homeHero/Hero";
+import Hero from "./HomeHero/Hero";
 import styles from "./Home.module.scss";
-import HomeCategory from "./homeCategory/HomeCategory";
-import HomeRecipes from "./homeRecipes/HomeRecipes";
+import HomeCategory from "./HomeCategory/HomeCategory";
+import HomeRecipes from "./HomeRecipes/HomeRecipes";
 
 export const Home = () => {
   return (

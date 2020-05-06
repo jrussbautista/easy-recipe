@@ -6,7 +6,7 @@
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    margin-right: 1rem;
+    padding-left: 1rem;
   }
 
   .wrapper::-webkit-scrollbar {
@@ -14,7 +14,7 @@
   }
 
   .list {
-    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .img {
