@@ -17,6 +17,7 @@ export const userType = gql`
     name: String!
     email: String!
     token: String!
+    image: String
   }
 
   extend type Mutation {

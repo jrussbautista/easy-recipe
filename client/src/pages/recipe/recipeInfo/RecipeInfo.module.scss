@@ -1,0 +1,92 @@
+.recipe {
+  .coverWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    width: 100%;
+  }
+
+  .mainImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    object-fit: cover;
+  }
+
+  .info {
+    padding: 1rem;
+  }
+
+  .recipeCard {
+    background-color: #fff;
+  }
+
+  .recipeTitle {
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 1rem 0;
+  }
+
+  .desc {
+    font-size: 1.1rem;
+    padding-bottom: 1rem;
+    line-height: 1.5;
+    color: var(--color-darker-gray);
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+
+    li {
+      padding-right: 1rem;
+    }
+
+    .label {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .name {
+      font-size: 1rem;
+      margin: 0.6rem 0;
+    }
+  }
+
+  .authorInfo {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #fff;
+    margin: 1rem 0;
+
+    p {
+      margin: 0;
+    }
+
+    .author {
+      font-weight: 500;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+    }
+
+    .avatarWrapper {
+      margin-right: 1rem;
+    }
+
+    .userName {
+      font-size: 1rem;
+    }
+  }
+}
