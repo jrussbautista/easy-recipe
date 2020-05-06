@@ -1,0 +1,17 @@
+.skeleton {
+  .boxWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    background-color: var(--color-dark-gray);
+  }
+
+  .line {
+    background-color: var(--color-dark-gray);
+    height: 2rem;
+    margin: 1rem 0;
+  }
+
+  .lineWrapper {
+    padding: 1rem;
+  }
+}

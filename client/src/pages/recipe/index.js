@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { RECIPE } from "../../lib/graphql/queries";
 import RecipeInfo from "./recipeInfo/RecipeInfo";
 import RecipeInfoList from "./recipeInfoList/RecipeInfoList";
+import RecipeSkeleton from "./recipeSkeleton";
 
 export const Recipe = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ export const Recipe = () => {
 
   if (error) return <h2>Something went wrong</h2>;
 
-  if (loading) return <h2> Loading... </h2>;
+  if (loading) return <RecipeSkeleton />;
 
   const recipe = data.recipe;
 
