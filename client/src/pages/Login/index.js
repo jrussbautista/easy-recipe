@@ -16,7 +16,7 @@ export const Login = () => {
 
   const [user, setUser] = useState(initUser);
 
-  const [login, { data, loading, error }] = useMutation(LOGIN, {
+  const [login, { loading, error }] = useMutation(LOGIN, {
     onCompleted(data) {
       setCurrentUser(data.login);
       localStorage.setItem("token", data.login.token);

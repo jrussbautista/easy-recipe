@@ -1,9 +1,10 @@
 import React from "react";
+import AppSkeletonHeader from "./AppSkeletonHeader";
 
 const AppSkeleton = () => {
   return (
     <div>
-      <h2>loading..</h2>
+      <AppSkeletonHeader />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { AuthenticationError, ApolloError } from "apollo-server";
 import { User } from "../../models";
+import { authenticate } from "../../lib/utils/auth";
 
 const sendAuthResponse = (user) => {
   const token = user.getToken();
@@ -33,6 +34,14 @@ export const userResolvers = {
       } catch (error) {
         console.log(error);
         throw new ApolloError(error);
+      }
+    },
+    loginViaToken: async (root, {}, { req }) => {
+      try {
+        const user = await authenticate(req);
+        return user;
+      } catch (error) {
+        throw new AuthenticationError(error);
       }
     },
     register: async (root, { input }) => {

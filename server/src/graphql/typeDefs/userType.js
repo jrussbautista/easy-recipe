@@ -23,5 +23,6 @@ export const userType = gql`
   extend type Mutation {
     login(input: LoginInput): User!
     register(input: RegisterInput): User!
+    loginViaToken: User!
   }
 `;
