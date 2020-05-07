@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./MobileMenu.module.scss";
 
-const MobileMenu = () => {
+const MobileMenu = ({ isOpen }) => {
   return (
-    <div className={styles.mobileMenu}>
+    <div className={`${styles.mobileMenu} ${isOpen ? styles.isOpen : ""}`}>
       <nav>
         <ul>
           <li>

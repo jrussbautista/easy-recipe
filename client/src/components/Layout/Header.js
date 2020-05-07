@@ -20,21 +20,23 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.wrapper}>
-        <Link to="/" className={styles.title}>
-          Easy Recipe
-        </Link>
+      <div className={styles.headerWrapper}>
+        <div className={styles.wrapper}>
+          <Link to="/" className={styles.title}>
+            Easy Recipe
+          </Link>
+        </div>
+        <div className={styles.right}>
+          <button
+            ref={mobileRef}
+            className={styles.btnHamburger}
+            onClick={() => setIsOpenMobileNav(!isOpenMObileNav)}
+          >
+            <HamburgerIcon isOpen={isOpenMObileNav} />
+          </button>
+        </div>
       </div>
-      <div className={styles.right}>
-        <button
-          ref={mobileRef}
-          className={styles.btnHamburger}
-          onClick={() => setIsOpenMobileNav(!isOpenMObileNav)}
-        >
-          <HamburgerIcon isOpen={isOpenMObileNav} />
-        </button>
-      </div>
-      {isOpenMObileNav && <MobileMenu />}
+      <MobileMenu isOpen={isOpenMObileNav} />
       <nav className={styles.headerNav}>
         <ul>
           <li>
