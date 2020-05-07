@@ -1,0 +1,23 @@
+.mobileMenu {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: #fff;
+  border-top: 1px solid var(--color-dark-gray);
+  box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.06);
+
+  nav li {
+    text-align: center;
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-dark-gray);
+    }
+  }
+
+  a {
+    padding: 1.5rem;
+    font-size: 1.1rem;
+    display: block;
+  }
+}

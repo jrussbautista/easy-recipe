@@ -1,0 +1,90 @@
+.hamburger {
+  padding: 15px 15px;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+.hamburger:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active .hamburgerInner,
+.hamburger.is-active .hamburgerInner::before,
+.hamburger.is-active .hamburgerInner::after {
+  background-color: #000;
+}
+
+.hamburgerBox {
+  width: 30px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburgerInner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+.hamburgerInner,
+.hamburgerInner::before,
+.hamburgerInner::after {
+  width: 30px;
+  height: 3px;
+  background-color: #000;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+.hamburgerInner::before,
+.hamburgerInner::after {
+  content: "";
+  display: block;
+}
+.hamburgerInner::before {
+  top: -10px;
+}
+.hamburgerInner::after {
+  bottom: -10px;
+}
+
+.hamburger3dx .hamburgerBox {
+  perspective: 80px;
+}
+
+.hamburgerSlider .hamburgerInner {
+  top: 2px;
+}
+.hamburgerSlider .hamburgerInner::before {
+  top: 10px;
+  transition-property: transform, opacity;
+  transition-timing-function: ease;
+  transition-duration: 0.15s;
+}
+.hamburgerSlider .hamburgerInner::after {
+  top: 20px;
+}
+
+.hamburgerSlider.isActive .hamburgerInner {
+  transform: translate3d(0, 10px, 0) rotate(45deg);
+}
+.hamburgerSlider.isActive .hamburgerInner::before {
+  transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+  opacity: 0;
+}
+.hamburgerSlider.isActive .hamburgerInner::after {
+  transform: translate3d(0, -20px, 0) rotate(-90deg);
+}
