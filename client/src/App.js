@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home, NotFound, Recipe, Login, User } from "./pages";
+import { Home, NotFound, Recipe, Login, User, CreateRecipe } from "./pages";
 import Layout from "./components/Layout";
 import ScrollTop from "./components/ScrollTop";
 import { useAuth } from "./store";
 import AppSkeleton from "./components/AppSkeleton";
+import ProtectedRoute from "./components/Routing/ProtectedRoute";
 
 function App() {
   const { loading } = useAuth();
@@ -24,6 +25,11 @@ function App() {
           <Route path="/login" exact>
             <Login />
           </Route>
+          <ProtectedRoute
+            path="/recipe/create"
+            exact
+            component={CreateRecipe}
+          />
           <Route path="/recipe/:id" exact>
             <Recipe />
           </Route>
