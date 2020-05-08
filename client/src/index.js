@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { AuthProvider } from "./store";
+import { AuthProvider, ToastProvider } from "./store";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
@@ -22,9 +22,11 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <AuthProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <ToastProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </ToastProvider>
     </AuthProvider>
   </ApolloProvider>,
   document.getElementById("root")

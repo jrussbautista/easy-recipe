@@ -1,0 +1,51 @@
+.toast {
+  position: fixed;
+  top: 5rem;
+  z-index: 100;
+  padding: 0.5rem;
+  display: none;
+  width: 100%;
+
+  .container {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 6px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .icon {
+    padding-right: 0.8rem;
+  }
+
+  .text {
+    flex: 1;
+    font-size: 1.1rem;
+  }
+
+  &.show {
+    display: block;
+  }
+
+  .msg {
+    padding-right: 0.5rem;
+  }
+
+  .title {
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .close {
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
+    justify-content: flex-end;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+}
