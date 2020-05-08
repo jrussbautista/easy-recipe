@@ -1,5 +1,5 @@
 import { AuthenticationError, ApolloError } from "apollo-server";
-import { User } from "../../models";
+import { User, Recipe } from "../../models";
 import { authenticate } from "../../lib/utils/auth";
 
 const sendAuthResponse = (user) => {
@@ -16,6 +16,17 @@ const sendAuthResponse = (user) => {
 };
 
 export const userResolvers = {
+  Query: {
+    user: async (root, { id }) => {
+      try {
+        const user = await User.findById(id);
+        if (!user) throw new Error("User not found");
+        return user;
+      } catch (error) {
+        throw new Error(error);
+      }
+    },
+  },
   Mutation: {
     login: async (root, { input }) => {
       try {
@@ -51,6 +62,23 @@ export const userResolvers = {
       } catch (error) {
         throw new Error(`Can't create user: ${error}`);
       }
+    },
+  },
+  User: {
+    recipes: async ({ _id }, { limit, page }) => {
+      const total = await Recipe.find({ author: _id }).countDocuments();
+      const query = Recipe.find({ author: _id });
+
+      const skips = (page - 1) * limit;
+
+      const recipes = await query.skip(skips).limit(limit);
+
+      const data = {
+        total,
+        result: recipes,
+      };
+
+      return data;
     },
   },
 };

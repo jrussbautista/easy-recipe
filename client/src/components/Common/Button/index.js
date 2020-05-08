@@ -1,10 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Button.module.scss";
 
-export const Button = ({ title, onClick, loading = false, ...rest }) => {
+export const Button = ({ title, onClick, loading = false, to, ...rest }) => {
   return (
-    <button onClick={onClick} className={styles.btn} {...rest}>
-      {loading ? "..." : title}
-    </button>
+    <>
+      {to ? (
+        <Link to={to} className={styles.btn}>
+          {title}
+        </Link>
+      ) : (
+        <button onClick={onClick} className={styles.btn} {...rest}>
+          {loading ? "..." : title}
+        </button>
+      )}
+    </>
   );
 };

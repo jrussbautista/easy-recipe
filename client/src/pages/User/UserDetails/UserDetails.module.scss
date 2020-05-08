@@ -1,0 +1,23 @@
+.user {
+  .card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+
+    .img {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+    }
+
+    .name {
+      padding: 0 0.8rem;
+      font-size: 1.1rem;
+    }
+  }
+}

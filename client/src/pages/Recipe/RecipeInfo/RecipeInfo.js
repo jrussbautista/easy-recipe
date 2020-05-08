@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./RecipeInfo.module.scss";
 import Rating from "../../../components/Rating";
 
@@ -29,15 +30,18 @@ const RecipeInfo = ({ recipe }) => {
           </ul>
         </div>
       </div>
-      <div className={styles.authorInfo}>
-        <div className={styles.avatarWrapper}>
-          <img src={recipe.author.image} alt={recipe.author.name} />
+      <Link to={`/user/${recipe.author.id}`}>
+        <div className={styles.authorInfo}>
+          <div className={styles.avatarWrapper}>
+            <img src={recipe.author.image} alt={recipe.author.name} />
+          </div>
+
+          <div>
+            <p className={styles.author}>Author</p>
+            <p className={styles.userName}>{recipe.author.name}</p>
+          </div>
         </div>
-        <div>
-          <p className={styles.author}>Author</p>
-          <p className={styles.userName}>{recipe.author.name}</p>
-        </div>
-      </div>
+      </Link>
     </div>
   );
 };

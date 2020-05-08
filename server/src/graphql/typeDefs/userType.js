@@ -18,6 +18,11 @@ export const userType = gql`
     email: String!
     token: String!
     image: String
+    recipes(page: Int!, limit: Int!): Recipes
+  }
+
+  extend type Query {
+    user(id: ID!): User!
   }
 
   extend type Mutation {
