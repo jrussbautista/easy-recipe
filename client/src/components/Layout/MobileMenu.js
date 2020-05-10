@@ -25,6 +25,11 @@ const MobileMenu = ({ isOpen }) => {
                 </Link>
               </li>
               <li>
+                <Link to={`/recipe/create`} className={styles.link}>
+                  Create Recipe
+                </Link>
+              </li>
+              <li>
                 <span className={styles.link}>
                   <Button title="Log Out" onClick={handleLogout} />
                 </span>

@@ -5,6 +5,8 @@ export const recipeType = gql`
     title: String!
     description: String!
     image: String!
+    category: String!
+    difficulty: String!
     ingredients: [String!]!
     instructions: [String!]!
   }
@@ -14,8 +16,10 @@ export const recipeType = gql`
     title: String!
     description: String!
     image: String!
+    category: String!
     ingredients: [String!]!
     instructions: [String!]!
+    difficulty: String!
     author: User!
     ratingsCount: Int!
     likesCount: Int!

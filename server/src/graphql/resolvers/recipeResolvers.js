@@ -1,6 +1,7 @@
 import { Recipe, User } from "../../models";
 import { authenticate } from "../../lib/utils";
 import { ApolloError } from "apollo-server";
+import { Cloudinary } from "../../lib/cloudinary";
 
 export const recipeResolvers = {
   Query: {
@@ -32,6 +33,8 @@ export const recipeResolvers = {
       try {
         const user = await authenticate(req);
         input.author = user;
+        const image = await Cloudinary.upload(input.image);
+        input.image = image;
         const recipe = await Recipe.create(input);
         return recipe;
       } catch (error) {
