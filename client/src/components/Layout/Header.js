@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
+import { FiSearch } from "react-icons/fi";
 import { HamburgerIcon } from "../Icons";
 import MobileMenu from "./MobileMenu";
 
@@ -21,21 +22,25 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>
-        <div className={styles.wrapper}>
+        <button
+          ref={mobileRef}
+          className={styles.btnHamburger}
+          onClick={() => setIsOpenMobileNav(!isOpenMObileNav)}
+        >
+          <HamburgerIcon isOpen={isOpenMObileNav} />
+        </button>
+        <div className={styles.titleWrapper}>
           <Link to="/" className={styles.title}>
             Easy Recipe
           </Link>
         </div>
         <div className={styles.right}>
-          <button
-            ref={mobileRef}
-            className={styles.btnHamburger}
-            onClick={() => setIsOpenMobileNav(!isOpenMObileNav)}
-          >
-            <HamburgerIcon isOpen={isOpenMObileNav} />
-          </button>
+          <span className={styles.icon}>
+            <FiSearch />
+          </span>
         </div>
       </div>
+
       <MobileMenu isOpen={isOpenMObileNav} />
       <nav className={styles.headerNav}>
         <ul>

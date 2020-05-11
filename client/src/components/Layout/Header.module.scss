@@ -13,6 +13,11 @@
     box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.06);
   }
 
+  .titleWrapper {
+    flex: 1;
+    text-align: center;
+  }
+
   .title {
     font-size: 1.5rem;
     font-weight: 500;
@@ -21,15 +26,22 @@
   }
 
   .right {
-    flex: 1;
     justify-content: flex-end;
     display: flex;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 
   .btnHamburger {
     background-color: transparent;
     transform: rotate(180deg);
     border: 1px solid transparent;
+    &:focus {
+      outline: none;
+    }
   }
 
   .btnHamburger svg {

@@ -16,6 +16,7 @@ export const Button = ({
         <Link
           to={to}
           className={`${styles.btn} ${classType ? styles[classType] : ""}`}
+          {...rest}
         >
           {title}
         </Link>
