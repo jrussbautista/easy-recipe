@@ -16,7 +16,7 @@ export const Home = () => {
         <div className={styles.btnWrapper}>
           <Button
             title="See More"
-            to="/recipes/2"
+            to="/recipes?page=2"
             classType="outline"
             style={{ width: "100%" }}
           />

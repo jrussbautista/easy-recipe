@@ -1,6 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home, NotFound, Recipe, Login, User, CreateRecipe } from "./pages";
+import {
+  Home,
+  NotFound,
+  Recipe,
+  Login,
+  User,
+  CreateRecipe,
+  Recipes,
+} from "./pages";
 import Layout from "./components/Layout";
 import ScrollTop from "./components/ScrollTop";
 import { useAuth } from "./store";
@@ -32,6 +40,9 @@ function App() {
           />
           <Route path="/recipe/:id" exact>
             <Recipe />
+          </Route>
+          <Route path="/recipes" exact>
+            <Recipes />
           </Route>
           <Route path="/user/:id" exact>
             <User />
