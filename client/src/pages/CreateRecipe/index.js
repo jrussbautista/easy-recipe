@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
-import styles from "./CreateRecipe.module.scss";
 import { CREATE_RECIPE } from "../../lib/graphql/mutations/createRecipe";
+import { Button } from "../../components/Common";
+import { useToast } from "../../store";
+import { BsFillImageFill } from "react-icons//bs";
+import styles from "./CreateRecipe.module.scss";
+import PageLoading from "../../components/PageLoading";
 
 export const CreateRecipe = () => {
   const initialState = {
@@ -15,10 +20,14 @@ export const CreateRecipe = () => {
   const [ingredients, setIngredients] = useState([""]);
   const [instructions, setInstructions] = useState([""]);
   const [imagePreview, setImagePreview] = useState(null);
+  const { setToast } = useToast();
+  const history = useHistory();
 
   const [createRecipe, { loading }] = useMutation(CREATE_RECIPE, {
     onCompleted(data) {
-      console.log(data);
+      const { id } = data.createRecipe;
+      setToast("success", "Success", "Successfully recipe created");
+      history.push(`/recipe/${id}`);
     },
     onError(err) {
       console.log(err);
@@ -35,7 +44,6 @@ export const CreateRecipe = () => {
       ...recipe,
       ingredients,
       instructions,
-      difficulty: "beginner",
       image: imagePreview,
     };
     await createRecipe({ variables: { input } });
@@ -71,36 +79,57 @@ export const CreateRecipe = () => {
 
   return (
     <div className={styles.createRecipe}>
+      {loading && <PageLoading />}
       <h2> Create your own recipe </h2>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.group}>
           <label htmlFor="title"> Title: </label>
           <input type="text" name="title" onChange={handleChange} />
         </div>
-        <div>
+        <div className={styles.group}>
           <label htmlFor="description"> Description: </label>
-          <input type="text" name="description" onChange={handleChange} />
+          <textarea
+            type="text"
+            name="description"
+            className={styles.textArea}
+            onChange={handleChange}
+            defaultValue={recipe.description}
+          ></textarea>
         </div>
-        <div>
+        <div className={styles.group}>
           <label htmlFor="description"> Category: </label>
           <select onChange={handleChange} name="category">
             <option value="appetizers">Appetizers</option>
             <option value="beef">Beef</option>
           </select>
         </div>
-        <div>
+        <div className={styles.group}>
+          <label htmlFor="description"> Difficulty: </label>
+          <select onChange={handleChange} name="difficulty">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </div>
+        <div className={styles.group}>
           <label htmlFor="description"> Image: </label>
-          <input type="file" name="image" onChange={handleImageChange} />
+          <div className={styles.inputFile}>
+            <input type="file" name="image" onChange={handleImageChange} />
+            <div className={styles.fileBtn}>
+              <BsFillImageFill color={`var(--color-primary)`} />
+              <div className={styles.fileBtnText}> Upload Image </div>
+            </div>
+          </div>
           {imagePreview && (
-            <div>
-              <img src={imagePreview} style={{ width: 200 }} />
+            <div className={styles.imgPreview}>
+              <img src={imagePreview} />
             </div>
           )}
         </div>
-        <div>
+        <div className={styles.group}>
           <label> Ingredients: </label>
           {ingredients.map((ingredient, i) => (
-            <div key={i}>
+            <div key={i} className={styles.inputItem}>
               <input
                 type="text"
                 name={`ingredient-${i}`}
@@ -109,14 +138,18 @@ export const CreateRecipe = () => {
               />
             </div>
           ))}
-          <button onClick={() => handleAdd("ingredients")} type="button">
-            Add more ingredient
-          </button>
+
+          <Button
+            onClick={() => handleAdd("ingredients")}
+            type="button"
+            title="Add Ingredient"
+            classType="outline"
+          />
         </div>
-        <div>
+        <div className={styles.group}>
           <label htmlFor="description"> Instructions: </label>
           {instructions.map((instruction, i) => (
-            <div key={i}>
+            <div key={i} className={styles.inputItem}>
               <input
                 type="text"
                 name={`instruction-${i}`}
@@ -125,12 +158,15 @@ export const CreateRecipe = () => {
               />
             </div>
           ))}
-          <button onClick={() => handleAdd("instructions")} type="button">
-            Add more instruction
-          </button>
+          <Button
+            onClick={() => handleAdd("instructions")}
+            type="button"
+            title="Add Instruction"
+            classType="outline"
+          />
         </div>
-        <div>
-          <button type="submit"> Submit </button>
+        <div className={styles.group} style={{ marginTop: "2rem" }}>
+          <Button type="submit" title="Submit" style={{ width: "100%" }} />
         </div>
       </form>
     </div>

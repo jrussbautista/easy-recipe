@@ -28,7 +28,7 @@ const RecipeSchema = mongoose.Schema(
     },
     ratingsCount: {
       type: Number,
-      default: 5,
+      default: 0,
     },
     difficulty: {
       type: String,

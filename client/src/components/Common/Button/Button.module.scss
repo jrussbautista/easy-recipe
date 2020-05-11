@@ -7,4 +7,10 @@
   border-radius: 6px;
   font-size: 1.1rem;
   cursor: pointer;
+
+  &.outline {
+    background-color: #fff;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+  }
 }
