@@ -2,6 +2,45 @@ import { Recipe, User } from "../../models";
 import { authenticate } from "../../lib/utils";
 import { ApolloError } from "apollo-server";
 import { Cloudinary } from "../../lib/cloudinary";
+import isLength from "validator/lib/isLength";
+
+const validateRecipeInput = ({
+  image,
+  title,
+  description,
+  category,
+  difficulty,
+  instructions,
+  ingredients,
+}) => {
+  if (!isLength(title, { min: 6 })) {
+    throw new Error("Title must be  under 6 characters");
+  }
+
+  if (!isLength(description, { max: 200 })) {
+    throw new Error("Description must not above 200 characters");
+  }
+
+  if (!isLength(category)) {
+    throw new Error("Category is required");
+  }
+
+  if (!isLength(difficulty)) {
+    throw new Error("Category is required");
+  }
+
+  if (!isLength(image)) {
+    throw new Error("Image is required");
+  }
+
+  if (ingredients.length === 0) {
+    throw new Error("Ingredients is required");
+  }
+
+  if (instructions.length === 0) {
+    throw new Error("Instructions is required");
+  }
+};
 
 export const recipeResolvers = {
   Query: {
@@ -38,6 +77,7 @@ export const recipeResolvers = {
     createRecipe: async (root, { input }, { req }) => {
       try {
         const user = await authenticate(req);
+        validateRecipeInput(input);
         input.author = user;
         const image = await Cloudinary.upload(input.image);
         input.image = image;
