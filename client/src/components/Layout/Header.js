@@ -4,10 +4,14 @@ import styles from "./Header.module.scss";
 import { FiSearch } from "react-icons/fi";
 import { HamburgerIcon } from "../Icons";
 import MobileMenu from "./MobileMenu";
+import SearchBar from "./SearchBar";
 
 export const Header = () => {
   const [isOpenMObileNav, setIsOpenMobileNav] = useState(false);
+  const [isOpenSearchBar, setIsOpenSearchBar] = useState(false);
   const mobileRef = useRef();
+  const searchRef = useRef();
+  const searchBarRef = useRef();
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutSide);
@@ -15,8 +19,16 @@ export const Header = () => {
   }, []);
 
   const handleClickOutSide = (e) => {
-    if (mobileRef.current.contains(e.target)) return;
-    setIsOpenMobileNav(false);
+    if (
+      !searchBarRef.current.contains(e.target) &&
+      !searchRef.current.contains(e.target)
+    ) {
+      setIsOpenSearchBar(false);
+    }
+
+    if (!mobileRef.current.contains(e.target)) {
+      setIsOpenMobileNav(false);
+    }
   };
 
   return (
@@ -35,12 +47,21 @@ export const Header = () => {
           </Link>
         </div>
         <div className={styles.right}>
-          <span className={styles.icon}>
+          <span
+            ref={searchRef}
+            className={styles.icon}
+            onClick={() => setIsOpenSearchBar(!isOpenSearchBar)}
+          >
             <FiSearch />
           </span>
         </div>
       </div>
-
+      <div ref={searchBarRef}>
+        <SearchBar
+          isOpen={isOpenSearchBar}
+          close={() => setIsOpenSearchBar(false)}
+        />
+      </div>
       <MobileMenu isOpen={isOpenMObileNav} />
       <nav className={styles.headerNav}>
         <ul>
