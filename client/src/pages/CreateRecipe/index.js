@@ -30,7 +30,11 @@ export const CreateRecipe = () => {
       history.push(`/recipe/${id}`);
     },
     onError(err) {
-      console.log(err);
+      setToast(
+        "error",
+        "Error",
+        "Error in creating recipe. Please try again later."
+      );
     },
   });
 
@@ -122,7 +126,7 @@ export const CreateRecipe = () => {
           </div>
           {imagePreview && (
             <div className={styles.imgPreview}>
-              <img src={imagePreview} />
+              <img src={imagePreview} alt="recipe-img-preview" />
             </div>
           )}
         </div>

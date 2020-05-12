@@ -7,13 +7,21 @@ import styles from "./User.module.scss";
 import UserRecipes from "./UserRecipes";
 import ErrorMessage from "../../components/ErrorMessage";
 import RecipeSkeleton from "./UserSkeleton";
+import Pagination from "../../components/Pagination";
+
+const PAGE_LIMIT = 5;
 
 export const User = () => {
   const { id } = useParams();
 
+  const [page, setPage] = useState(1);
   const { data, loading, error } = useQuery(USER, {
-    variables: { id, page: 1, limit: 5 },
+    variables: { id, page, limit: PAGE_LIMIT },
   });
+
+  const handlePageChange = (val) => {
+    setPage(val);
+  };
 
   if (loading) return <RecipeSkeleton />;
 
@@ -31,7 +39,15 @@ export const User = () => {
       {recipes.result.length === 0 ? (
         <h2 className={styles.empty}> No created recipe yet. </h2>
       ) : (
-        <UserRecipes recipes={recipes.result} />
+        <>
+          <UserRecipes recipes={recipes.result} />
+          <Pagination
+            onChange={handlePageChange}
+            activePage={page}
+            total={recipes.total}
+            itemsPerPage={PAGE_LIMIT}
+          />
+        </>
       )}
     </div>
   );
