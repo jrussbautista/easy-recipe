@@ -42,4 +42,15 @@ const RecipeSchema = mongoose.Schema(
   { timestamps: true }
 );
 
+RecipeSchema.index(
+  {
+    title: "text",
+  },
+  {
+    weights: {
+      title: 3,
+    },
+  }
+);
+
 export const Recipe = mongoose.model("Recipe", RecipeSchema);

@@ -15,11 +15,12 @@ export const Recipes = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   let pageQuery = query.get("page");
+  const keyword = query.get("search");
   pageQuery = Number(pageQuery) || 1;
 
   const [page, setPage] = useState(pageQuery);
   const { loading, data, error } = useQuery(RECIPES, {
-    variables: { page, limit: PAGE_LIMIT },
+    variables: { page, limit: PAGE_LIMIT, keyword },
   });
 
   if (loading) {
@@ -47,14 +48,22 @@ export const Recipes = () => {
 
   return (
     <div className={styles.container}>
-      <h2> All Recipes </h2>
-      <RecipeList recipes={recipes} />
-      <Pagination
-        onChange={handlePageChange}
-        activePage={page}
-        total={total}
-        itemsPerPage={PAGE_LIMIT}
-      />
+      {total === 0 ? (
+        <div className={styles.empty}>
+          <h2> No recipes Found. </h2>
+        </div>
+      ) : (
+        <>
+          <h2> All Recipes </h2>
+          <RecipeList recipes={recipes} />
+          <Pagination
+            onChange={handlePageChange}
+            activePage={page}
+            total={total}
+            itemsPerPage={PAGE_LIMIT}
+          />
+        </>
+      )}
     </div>
   );
 };

@@ -5,13 +5,19 @@ import { Cloudinary } from "../../lib/cloudinary";
 
 export const recipeResolvers = {
   Query: {
-    recipes: async (root, args) => {
-      const page = args.page || 1;
-      const limit = args.limit || 5;
+    recipes: async (root, { page, limit, keyword }) => {
+      let total, query;
 
-      const total = await Recipe.countDocuments();
+      if (keyword) {
+        query = Recipe.find({ $text: { $search: keyword } });
+        total = await Recipe.find({
+          $text: { $search: keyword },
+        }).countDocuments();
+      } else {
+        total = await Recipe.countDocuments();
+        query = Recipe.find();
+      }
 
-      const query = Recipe.find();
       const skips = (page - 1) * limit;
 
       const recipes = await query.skip(skips).limit(limit);

@@ -31,7 +31,7 @@ export const recipeType = gql`
   }
 
   extend type Query {
-    recipes(page: Int!, limit: Int!): Recipes!
+    recipes(page: Int!, limit: Int!, keyword: String): Recipes!
     recipe(id: ID): Recipe!
   }
 
