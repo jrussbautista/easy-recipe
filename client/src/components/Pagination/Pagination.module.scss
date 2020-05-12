@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 3rem;
+    font-size: 1.1rem;
+    margin: 0 0.5rem;
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .btnLeft {
+    margin: 0 1rem 0 0;
+  }
+
+  .btnRight {
+    margin: 0 0 0 1rem;
+  }
+}
