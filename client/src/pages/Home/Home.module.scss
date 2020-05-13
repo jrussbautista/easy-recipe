@@ -1,6 +1,11 @@
 .container {
   padding: 0 1rem;
 
+  @media only screen and (min-width: 768px) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
   .btnWrapper {
     margin: 1rem 0;
   }

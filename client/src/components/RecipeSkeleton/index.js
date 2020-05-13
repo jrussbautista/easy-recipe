@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./RecipeSkeleton.module.scss";
 
-const RecipeSkeleton = ({ numbers = 5 }) => {
+const RecipeSkeleton = ({ numbers = 10 }) => {
   const gridArr = Array(numbers)
     .fill()
     .map((_, i) => i + 1);
@@ -9,7 +9,7 @@ const RecipeSkeleton = ({ numbers = 5 }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.heading} style={{ width: "15rem" }}></div>
-      <div>
+      <div className={styles.grid}>
         {gridArr.map((grid) => (
           <div className={styles.card} key={grid}>
             <div className={styles.img}></div>

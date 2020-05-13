@@ -23,9 +23,15 @@
   }
 
   .title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.5rem;
     height: 3rem;
     margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 }

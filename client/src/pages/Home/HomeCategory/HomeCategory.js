@@ -4,11 +4,12 @@ import { useQuery } from "@apollo/react-hooks";
 import { CATEGORIES } from "../../../lib/graphql/queries/categories";
 import { capitalizeFirstLetter } from "../../../utils";
 import styles from "./HomeCategory.module.scss";
+import HomeCategorySkeleton from "../HomeCategorySkeleton";
 
 const HomeCategory = () => {
   const { loading, error, data } = useQuery(CATEGORIES);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <HomeCategorySkeleton />;
 
   if (error) return <div></div>;
 

@@ -1,16 +1,7 @@
 .category {
   overflow: hidden;
-  margin: 0 -1rem;
-
   .wrapper {
     display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-left: 1rem;
-  }
-
-  .wrapper::-webkit-scrollbar {
-    display: none;
   }
 
   .list {
@@ -18,11 +9,10 @@
   }
 
   .img {
+    border-radius: 6px;
     width: 10rem;
     height: 6rem;
-    background-size: contain;
-    border-radius: 6px;
-    overflow: hidden;
+    background-color: var(--color-dark-gray);
 
     @media only screen and (min-width: 768px) {
       width: 12rem;
@@ -31,6 +21,7 @@
   }
 
   .title {
-    font-size: 1.3rem;
+    height: 1.5rem;
+    background-color: var(--color-dark-gray);
   }
 }
