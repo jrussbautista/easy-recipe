@@ -5,3 +5,4 @@ export * from "./Login";
 export * from "./User";
 export * from "./CreateRecipe";
 export * from "./Recipes";
+export * from "./Category";

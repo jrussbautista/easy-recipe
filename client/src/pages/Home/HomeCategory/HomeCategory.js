@@ -1,58 +1,38 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/react-hooks";
+import { CATEGORIES } from "../../../lib/graphql/queries/categories";
+import { capitalizeFirstLetter } from "../../../utils";
 import styles from "./HomeCategory.module.scss";
 
 const HomeCategory = () => {
+  const { loading, error, data } = useQuery(CATEGORIES);
+
+  if (loading) return <div>Loading...</div>;
+
+  if (error) return <div></div>;
+
+  const { categories } = data;
+
   return (
     <div className={styles.category}>
       <ul className={styles.wrapper}>
-        <li className={styles.list}>
-          <a href="#" className={styles.link}>
-            <img
-              className={styles.img}
-              src={`https://149410494.v2.pressablecdn.com/wp-content/uploads/elementor/thumbs/appetizer-bruschetta-with-tuna-and-tomatoes-LKA5ZYU-omrs5yczemz943vxo1dqw9tztvscarh3mzggf5azkw.jpg`}
-              alt=""
-            />
-            <div className={styles.info}>
-              <p className={styles.title}>Appetizers</p>
-            </div>
-          </a>
-        </li>
-        <li className={styles.list}>
-          <a href="#" className={styles.link}>
-            <img
-              className={styles.img}
-              src={`https://149410494.v2.pressablecdn.com/wp-content/uploads/elementor/thumbs/beef-steak-tomahawk-S3JHQLN-omrts6h2r6ooajb7o7fsckvwj4sv3smiz698m6z25c.jpg`}
-              alt=""
-            />
-            <div className={styles.info}>
-              <p className={styles.title}>Beef</p>
-            </div>
-          </a>
-        </li>
-        <li className={styles.list}>
-          <a href="#" className={styles.link}>
-            <img
-              className={styles.img}
-              src={`https://149410494.v2.pressablecdn.com/wp-content/uploads/elementor/thumbs/beef-steak-tomahawk-S3JHQLN-omrts6h2r6ooajb7o7fsckvwj4sv3smiz698m6z25c.jpg`}
-              alt=""
-            />
-            <div className={styles.info}>
-              <p className={styles.title}>Beef</p>
-            </div>
-          </a>
-        </li>
-        <li className={styles.list}>
-          <a href="#" className={styles.link}>
-            <img
-              className={styles.img}
-              src={`https://149410494.v2.pressablecdn.com/wp-content/uploads/elementor/thumbs/beef-steak-tomahawk-S3JHQLN-omrts6h2r6ooajb7o7fsckvwj4sv3smiz698m6z25c.jpg`}
-              alt=""
-            />
-            <div className={styles.info}>
-              <p className={styles.title}>Beef</p>
-            </div>
-          </a>
-        </li>
+        {categories.map((category) => (
+          <li className={styles.list} key={category.id}>
+            <Link to={`/category/${category.id}`} className={styles.link}>
+              <img
+                className={styles.img}
+                src={category.image}
+                alt={category.title}
+              />
+              <div className={styles.info}>
+                <p className={styles.title}>
+                  {capitalizeFirstLetter(category.title)}
+                </p>
+              </div>
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );

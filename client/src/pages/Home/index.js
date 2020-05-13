@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../../components/Common";
 import Hero from "./HomeHero/Hero";
 import styles from "./Home.module.scss";
 import HomeCategory from "./HomeCategory/HomeCategory";
@@ -13,14 +12,6 @@ export const Home = () => {
         <h2>Categories</h2>
         <HomeCategory />
         <HomeRecipes />
-        <div className={styles.btnWrapper}>
-          <Button
-            title="See More"
-            to="/recipes?page=2"
-            classType="outline"
-            style={{ width: "100%" }}
-          />
-        </div>
       </div>
     </div>
   );

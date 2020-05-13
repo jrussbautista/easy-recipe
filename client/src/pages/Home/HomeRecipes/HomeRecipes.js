@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { RECIPES } from "../../../lib/graphql/queries";
+import { Button } from "../../../components/Common";
 import RecipeList from "../../../components/RecipeList";
 import RecipeSkeleton from "../../../components/RecipeSkeleton";
 
@@ -19,6 +20,14 @@ const HomeRecipes = () => {
     <div>
       <h2>Latest Recipes</h2>
       <RecipeList recipes={recipes} />
+      <div style={{ margin: "1rem 0" }}>
+        <Button
+          title="See More"
+          to="/recipes?page=2"
+          classType="outline"
+          style={{ width: "100%" }}
+        />
+      </div>
     </div>
   );
 };

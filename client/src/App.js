@@ -8,6 +8,7 @@ import {
   User,
   CreateRecipe,
   Recipes,
+  Category,
 } from "./pages";
 import Layout from "./components/Layout";
 import ScrollTop from "./components/ScrollTop";
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/recipes" exact>
             <Recipes />
+          </Route>
+          <Route path="/category/:id" exact>
+            <Category />
           </Route>
           <Route path="/user/:id" exact>
             <User />
