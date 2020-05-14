@@ -9,8 +9,8 @@ const HomeCategorySkeleton = ({ numbers = 8 }) => {
   return (
     <div className={styles.category}>
       <ul className={styles.wrapper}>
-        {categories.map((category) => (
-          <li className={styles.list} key={category.id}>
+        {categories.map((category, i) => (
+          <li className={styles.list} key={i}>
             <div className={styles.img}></div>
             <div className={styles.info}>
               <p className={styles.title}></p>

@@ -10,6 +10,10 @@
   transition: ease 0.3s;
   transform: translateY(-100%);
 
+  @media only screen and (min-width: 1200px) {
+    display: none;
+  }
+
   &.isOpen {
     transform: translateY(0);
   }

@@ -35,27 +35,29 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerWrapper}>
-        <button
-          ref={mobileRef}
-          className={styles.btnHamburger}
-          onClick={() => setIsOpenMobileNav(!isOpenMObileNav)}
-        >
-          <HamburgerIcon isOpen={isOpenMObileNav} />
-        </button>
-        <div className={styles.titleWrapper}>
-          <Link to="/" className={styles.title}>
-            Easy Recipe
-          </Link>
-        </div>
-        <div className={styles.right}>
-          <span
-            ref={searchRef}
-            className={styles.icon}
-            onClick={() => setIsOpenSearchBar(!isOpenSearchBar)}
+        <div className={styles.headerContainer}>
+          <button
+            ref={mobileRef}
+            className={styles.btnHamburger}
+            onClick={() => setIsOpenMobileNav(!isOpenMObileNav)}
           >
-            <FiSearch />
-          </span>
-          <DesktopMenu />
+            <HamburgerIcon isOpen={isOpenMObileNav} />
+          </button>
+          <div className={styles.titleWrapper}>
+            <Link to="/" className={styles.title}>
+              Easy Recipe
+            </Link>
+          </div>
+          <div className={styles.right}>
+            <span
+              ref={searchRef}
+              className={styles.icon}
+              onClick={() => setIsOpenSearchBar(!isOpenSearchBar)}
+            >
+              <FiSearch />
+            </span>
+            <DesktopMenu />
+          </div>
         </div>
       </div>
       <div ref={searchBarRef}>
