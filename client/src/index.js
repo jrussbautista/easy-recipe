@@ -7,8 +7,13 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { AuthProvider, ToastProvider } from "./store";
 
+const uri =
+  process.env.NODE_ENV !== "production"
+    ? "https://easy-recipe.jrussclay.now.sh/"
+    : "http://localhost:4000";
+
 const client = new ApolloClient({
-  uri: "http://localhost:4000",
+  uri,
   request: (operation) => {
     const token = localStorage.getItem("token") || "";
     operation.setContext({
