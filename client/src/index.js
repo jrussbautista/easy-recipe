@@ -6,16 +6,17 @@ import * as serviceWorker from "./serviceWorker";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { AuthProvider, ToastProvider } from "./store";
+import cookie from "js-cookie";
 
 const uri =
-  process.env.NODE_ENV !== "production"
+  process.env.NODE_ENV === "production"
     ? "https://easy-recipe.jrussclay.now.sh/"
     : "http://localhost:4000";
 
 const client = new ApolloClient({
   uri,
   request: (operation) => {
-    const token = localStorage.getItem("token") || "";
+    const token = cookie.get("token") || "";
     operation.setContext({
       headers: {
         authorization: `Bearer ${token}`,

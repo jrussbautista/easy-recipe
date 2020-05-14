@@ -8,7 +8,7 @@ import styles from "./Login.module.scss";
 
 export const Login = () => {
   const history = useHistory();
-  const { user: currentUser, setCurrentUser } = useAuth();
+  const { user: currentUser, login: loginUser } = useAuth();
   const { setToast } = useToast();
 
   const initUser = {
@@ -19,9 +19,8 @@ export const Login = () => {
   const [user, setUser] = useState(initUser);
 
   const [login, { loading }] = useMutation(LOGIN, {
-    onCompleted(data) {
-      setCurrentUser(data.login);
-      localStorage.setItem("token", data.login.token);
+    async onCompleted(data) {
+      await loginUser(data.login.token, data.login);
       history.push(`/user/${data.login.id}`);
     },
     onError() {
@@ -38,7 +37,8 @@ export const Login = () => {
     await login({ variables: user });
   };
 
-  if (currentUser) return <Redirect to="/" />;
+  if (currentUser && !loading)
+    return <Redirect to={`/user/${currentUser.id}`} />;
 
   return (
     <div className={styles.login}>

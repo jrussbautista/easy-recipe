@@ -3,6 +3,7 @@ import reducer from "./authReducer";
 import { SET_USER, AUTH_ERROR, LOG_OUT } from "./authTypes";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_VIA_TOKEN } from "../../lib/graphql/mutations/loginViaToken";
+import cookie from "js-cookie";
 
 const AuthContext = createContext();
 
@@ -18,8 +19,13 @@ export const AuthProvider = ({ children }) => {
     dispatch({ type: SET_USER, payload: val });
   };
 
+  const login = (token, userData) => {
+    cookie.set("token", token);
+    setCurrentUser(userData);
+  };
+
   const logout = () => {
-    localStorage.removeItem("token");
+    cookie.remove("token");
     dispatch({ type: LOG_OUT });
   };
 
@@ -33,7 +39,7 @@ export const AuthProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = cookie.get("token");
     if (token) {
       // verify token to backend
       loginViaToken();
@@ -43,7 +49,7 @@ export const AuthProvider = ({ children }) => {
   }, [loginViaToken]);
 
   return (
-    <AuthContext.Provider value={{ ...state, setCurrentUser, logout }}>
+    <AuthContext.Provider value={{ ...state, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
