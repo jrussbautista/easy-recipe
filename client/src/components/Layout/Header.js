@@ -5,6 +5,7 @@ import { FiSearch } from "react-icons/fi";
 import { HamburgerIcon } from "../Icons";
 import MobileMenu from "./MobileMenu";
 import SearchBar from "./SearchBar";
+import DesktopMenu from "./DesktopMenu";
 
 export const Header = () => {
   const [isOpenMObileNav, setIsOpenMobileNav] = useState(false);
@@ -54,6 +55,7 @@ export const Header = () => {
           >
             <FiSearch />
           </span>
+          <DesktopMenu />
         </div>
       </div>
       <div ref={searchBarRef}>
@@ -63,16 +65,6 @@ export const Header = () => {
         />
       </div>
       <MobileMenu isOpen={isOpenMObileNav} />
-      <nav className={styles.headerNav}>
-        <ul>
-          <li>
-            <Link to="/login"> Easy Recipe </Link>
-          </li>
-          <li>
-            <Link to="/register"> Easy Recipe </Link>
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 };

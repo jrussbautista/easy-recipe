@@ -11,11 +11,20 @@
     background-color: #fff;
     min-height: 5rem;
     box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.06);
+
+    @media only screen and (min-width: 1200px) {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
   }
 
   .titleWrapper {
     flex: 1;
     text-align: center;
+
+    @media only screen and (min-width: 1200px) {
+      text-align: left;
+    }
   }
 
   .title {
@@ -33,6 +42,10 @@
   .icon {
     font-size: 1.5rem;
     cursor: pointer;
+
+    @media only screen and (min-width: 1200px) {
+      display: none;
+    }
   }
 
   .btnHamburger {
@@ -42,14 +55,14 @@
     &:focus {
       outline: none;
     }
+
+    @media only screen and (min-width: 1200px) {
+      display: none;
+    }
   }
 
   .btnHamburger svg {
     width: 1.2rem;
     height: 1.2rem;
   }
-}
-
-.headerNav {
-  display: none;
 }
