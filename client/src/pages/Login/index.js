@@ -23,7 +23,6 @@ export const Login = () => {
       setCurrentUser(data.login);
       localStorage.setItem("token", data.login.token);
       history.push(`/user/${data.login.id}`);
-      // setToast("success", "Success", "Log In Successfully");
     },
     onError() {
       setToast("error", "Error", "Email or password is incorrect!");

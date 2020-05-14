@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 export const connectDb = async () => {
   const DB =
     process.env.NODE_ENV === "production"
-      ? process.env.DATABASE_LOCAL
+      ? process.env.DATABASE_URL
       : process.env.DATABASE_LOCAL;
 
   const conn = await mongoose.connect(DB, {

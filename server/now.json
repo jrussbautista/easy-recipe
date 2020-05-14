@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "name": "easy-recipe",
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "src/index.js"
+    }
+  ],
+  "alias": ["easy-recipe"],
+  "env": {
+    "NODE_ENV": "production",
+    "DATABASE_URL": "@easy-recipe-db",
+    "JWT_SECRET_KEY": "@easy-recipe-jwt-secret-key",
+    "CLOUDINARY_SECRET_KEY": "@easy-recipe-cloudinary-secret-key",
+    "CLOUDINARY_API_KEY": "@easy-recipe-cloudinary-api-key"
+  }
+}

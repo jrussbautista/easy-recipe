@@ -3,11 +3,10 @@ import fs from "fs";
 import { connectDb } from "../database";
 import { Recipe, User, Category } from "../models";
 
-// READ JSON FILE
-// const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, "utf-8"));
-// const recipes = JSON.parse(
-//   fs.readFileSync(`${__dirname}/recipes.json`, "utf-8")
-// );
+const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, "utf-8"));
+const recipes = JSON.parse(
+  fs.readFileSync(`${__dirname}/recipes.json`, "utf-8")
+);
 
 const category = JSON.parse(
   fs.readFileSync(`${__dirname}/category.json`, "utf-8")
@@ -18,7 +17,8 @@ const importData = async () => {
   try {
     await connectDb();
     await Category.create(category);
-    // await Recipe.create(recipes);
+    await Recipe.create(recipes);
+    await User.create(users);
   } catch (err) {
     console.log(err);
   }

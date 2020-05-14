@@ -11,6 +11,8 @@ const start = async () => {
     typeDefs,
     resolvers,
     context: ({ req }) => ({ req }),
+    playground: true,
+    introspection: true,
   });
 
   server.listen().then(({ url }) => {
