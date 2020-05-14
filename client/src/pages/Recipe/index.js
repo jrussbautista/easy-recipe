@@ -5,6 +5,7 @@ import { RECIPE } from "../../lib/graphql/queries";
 import RecipeInfo from "./RecipeInfo/RecipeInfo";
 import RecipeInfoList from "./RecipeInfoList/RecipeInfoList";
 import RecipeSkeleton from "./RecipeSkeleton";
+import styles from "./Recipe.module.scss";
 
 export const Recipe = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ export const Recipe = () => {
   const recipe = data.recipe;
 
   return (
-    <div>
+    <div className={styles.container}>
       <RecipeInfo recipe={recipe} />
       <RecipeInfoList lists={recipe.ingredients} title="Ingredients" />
       <RecipeInfoList lists={recipe.instructions} title="Directions" />

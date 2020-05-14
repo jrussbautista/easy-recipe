@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "../../lib/graphql/mutations";
 import { useAuth, useToast } from "../../store";
@@ -8,7 +8,7 @@ import styles from "./Login.module.scss";
 
 export const Login = () => {
   const history = useHistory();
-  const { setCurrentUser } = useAuth();
+  const { user: currentUser, setCurrentUser } = useAuth();
   const { setToast } = useToast();
 
   const initUser = {
@@ -38,6 +38,8 @@ export const Login = () => {
     e.preventDefault();
     await login({ variables: user });
   };
+
+  if (currentUser) return <Redirect to="/" />;
 
   return (
     <div className={styles.login}>
