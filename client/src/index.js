@@ -10,7 +10,7 @@ import cookie from "js-cookie";
 
 const uri =
   process.env.NODE_ENV === "production"
-    ? "https://easy-recipe.jrussclay.now.sh/"
+    ? "https://easy-recipe.now.sh/"
     : "http://localhost:4000";
 
 const client = new ApolloClient({
