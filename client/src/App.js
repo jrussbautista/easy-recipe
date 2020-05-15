@@ -9,6 +9,7 @@ import {
   CreateRecipe,
   Recipes,
   Category,
+  Register,
 } from "./pages";
 import Layout from "./components/Layout";
 import ScrollTop from "./components/ScrollTop";
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/login" exact>
             <Login />
+          </Route>
+          <Route path="/register" exact>
+            <Register />
           </Route>
           <ProtectedRoute
             path="/recipe/create"

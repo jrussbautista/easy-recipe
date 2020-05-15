@@ -1,0 +1,28 @@
+.alert {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border-radius: 6px;
+  margin: 1rem 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  &.error {
+    background-color: #df4a4c;
+  }
+
+  .text {
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  .icon {
+    cursor: pointer;
+    padding: 0.2rem;
+
+    svg {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+}

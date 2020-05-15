@@ -6,7 +6,12 @@ const UserDetails = ({ user }) => {
     <div className={styles.user}>
       <div className={styles.card}>
         <div className={styles.userInfo}>
-          <img src={user.image} alt={user.name} className={styles.img} />
+          {user.image ? (
+            <img src={user.image} alt={user.name} className={styles.img} />
+          ) : (
+            <div className={styles.avatar}>{user.name.charAt(0)}</div>
+          )}
+
           <div className={styles.name}>{user.name}</div>
         </div>
       </div>
