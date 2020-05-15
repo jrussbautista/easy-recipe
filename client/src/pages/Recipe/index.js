@@ -5,6 +5,7 @@ import { RECIPE } from "../../lib/graphql/queries";
 import RecipeInfo from "./RecipeInfo/RecipeInfo";
 import RecipeInfoList from "./RecipeInfoList/RecipeInfoList";
 import RecipeSkeleton from "./RecipeSkeleton";
+import Seo from "../../components/Seo";
 import styles from "./Recipe.module.scss";
 
 export const Recipe = () => {
@@ -20,6 +21,10 @@ export const Recipe = () => {
 
   return (
     <div className={styles.container}>
+      <Seo
+        title={`${recipe.title} - Easy Recipe`}
+        description={recipe.description}
+      />
       <RecipeInfo recipe={recipe} />
       <RecipeInfoList lists={recipe.ingredients} title="Ingredients" />
       <RecipeInfoList lists={recipe.instructions} title="Directions" />

@@ -5,6 +5,7 @@ import { CATEGORY } from "../../lib/graphql/queries/category";
 import RecipeList from "../../components/RecipeList";
 import RecipeSkeleton from "../../components/RecipeSkeleton";
 import ErrorMessage from "../../components/ErrorMessage";
+import Seo from "../../components/Seo";
 import styles from "./Category.module.scss";
 
 export const Category = () => {
@@ -31,6 +32,10 @@ export const Category = () => {
 
   return (
     <div className={styles.category}>
+      <Seo
+        title={`Easy Recipe - ${category.title}`}
+        description={`easy recipe - ${category.title}`}
+      />
       <div
         style={{ backgroundImage: `url(${category.image})` }}
         className={styles.cover}

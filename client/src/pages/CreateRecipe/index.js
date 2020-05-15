@@ -4,9 +4,10 @@ import { useMutation } from "@apollo/react-hooks";
 import { CREATE_RECIPE } from "../../lib/graphql/mutations/createRecipe";
 import { Button } from "../../components/Common";
 import { useToast } from "../../store";
-import { BsFillImageFill } from "react-icons//bs";
-import styles from "./CreateRecipe.module.scss";
+import { BsFillImageFill } from "react-icons/bs";
+import Seo from "../../components/Seo";
 import PageLoading from "../../components/PageLoading";
+import styles from "./CreateRecipe.module.scss";
 
 export const CreateRecipe = () => {
   const initialState = {
@@ -83,6 +84,10 @@ export const CreateRecipe = () => {
 
   return (
     <div className={styles.createRecipe}>
+      <Seo
+        title="Easy Recipe - Create Recipe"
+        description="Easy recipe create recipe page"
+      />
       {loading && <PageLoading />}
       <h2> Create your own recipe </h2>
       <form onSubmit={handleSubmit} className={styles.form}>

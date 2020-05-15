@@ -5,10 +5,11 @@ import { RECIPES } from "../../lib/graphql/queries";
 import RecipeList from "../../components/RecipeList";
 import RecipeSkeleton from "../../components/RecipeSkeleton";
 import ErrorMessage from "../../components/ErrorMessage";
-import styles from "./Recipes.module.scss";
+import Seo from "../../components/Seo";
 import Pagination from "../../components/Pagination";
+import styles from "./Recipes.module.scss";
 
-const PAGE_LIMIT = 5;
+const PAGE_LIMIT = 12;
 
 export const Recipes = () => {
   const history = useHistory();
@@ -48,6 +49,10 @@ export const Recipes = () => {
 
   return (
     <div className={styles.container}>
+      <Seo
+        title="Easy Recipe - All Recipes"
+        description="Easy recipe login page"
+      />
       {total === 0 ? (
         <div className={styles.empty}>
           <h2> No recipes found. Try to search for other recipes. </h2>

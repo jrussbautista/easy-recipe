@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { USER } from "../../lib/graphql/queries/user";
 import UserDetails from "./UserDetails";
-import styles from "./User.module.scss";
 import UserRecipes from "./UserRecipes";
 import ErrorMessage from "../../components/ErrorMessage";
 import RecipeSkeleton from "./UserSkeleton";
 import Pagination from "../../components/Pagination";
+import Seo from "../../components/Seo";
+import styles from "./User.module.scss";
 
 const PAGE_LIMIT = 5;
 
@@ -35,7 +36,9 @@ export const User = () => {
 
   return (
     <div className={styles.container}>
+      <Seo title={`${user.name} - Easy Recipe`} />
       <UserDetails user={user} />
+
       {recipes.result.length === 0 ? (
         <h2 className={styles.empty}> No created recipe yet. </h2>
       ) : (

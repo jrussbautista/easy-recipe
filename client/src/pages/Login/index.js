@@ -4,8 +4,9 @@ import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "../../lib/graphql/mutations";
 import { useAuth, useAlert } from "../../store";
 import { Button } from "../../components/Common";
-import styles from "./Login.module.scss";
 import Alert from "../../components/Alert";
+import Seo from "../../components/Seo";
+import styles from "./Login.module.scss";
 
 export const Login = () => {
   const history = useHistory();
@@ -51,6 +52,7 @@ export const Login = () => {
 
   return (
     <div className={styles.login}>
+      <Seo title="Easy Recipe - Login" description="Easy recipe login page" />
       <h2 className={styles.heading}> Login your account </h2>
 
       <Alert type={type} alerts={errors} close={handleCloseAlert} />
@@ -78,7 +80,12 @@ export const Login = () => {
         </div>
         <div className={styles.group}>
           <div className={styles.btnWrapper}>
-            <Button title="Log In" type="submit" loading={loading} />
+            <Button
+              title="Log In"
+              type="submit"
+              loading={loading}
+              style={{ width: "100%" }}
+            />
           </div>
         </div>
       </form>

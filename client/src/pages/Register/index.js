@@ -5,6 +5,7 @@ import { REGISTER } from "../../lib/graphql/mutations";
 import { useAuth, useAlert } from "../../store";
 import { Button } from "../../components/Common";
 import Alert from "../../components/Alert";
+import Seo from "../../components/Seo";
 import styles from "./Register.module.scss";
 
 export const Register = () => {
@@ -52,6 +53,10 @@ export const Register = () => {
 
   return (
     <div className={styles.register}>
+      <Seo
+        title="Easy Recipe - Register"
+        description="Easy recipe register page"
+      />
       <h2 className={styles.heading}> Register your account </h2>
       <Alert type={type} alerts={errors} close={handleCloseAlert} />
       <form onSubmit={handleSubmit} className={styles.form}>

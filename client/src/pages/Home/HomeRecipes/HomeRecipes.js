@@ -6,9 +6,11 @@ import RecipeList from "../../../components/RecipeList";
 import RecipeSkeleton from "../../../components/RecipeSkeleton";
 import styles from "./HomeRecipes.module.scss";
 
+const PAGE_LIMIT = 12;
+
 const HomeRecipes = () => {
   const { data, loading, error } = useQuery(RECIPES, {
-    variables: { page: 1, limit: 10 },
+    variables: { page: 1, limit: PAGE_LIMIT },
   });
 
   if (error) return <h2>Something went wrong</h2>;
