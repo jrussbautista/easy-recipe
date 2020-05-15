@@ -44,9 +44,9 @@ const MobileMenu = ({ isOpen }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/register" className={styles.link}>
-                  Sign Up
-                </Link>
+                <span className={styles.link}>
+                  <Button title="Try for free" to="/register" />
+                </span>
               </li>
             </>
           )}

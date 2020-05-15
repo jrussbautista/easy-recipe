@@ -61,7 +61,9 @@ const DesktopMenu = () => {
               <Link to="/login"> Login </Link>
             </li>
             <li>
-              <Link to="/register"> Sign Up</Link>
+              <span className={styles.link}>
+                <Button title="Try for free" to="/register" />
+              </span>
             </li>
           </>
         )}
