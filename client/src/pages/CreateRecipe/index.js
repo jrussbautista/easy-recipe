@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { CREATE_RECIPE } from "../../lib/graphql/mutations/createRecipe";
 import { Button } from "../../components/Common";
-import { useToast } from "../../store";
+import { useToast, useAlert } from "../../store";
 import { BsFillImageFill } from "react-icons/bs";
 import Seo from "../../components/Seo";
 import PageLoading from "../../components/PageLoading";
+import Alert from "../../components/Alert";
 import styles from "./CreateRecipe.module.scss";
 
 export const CreateRecipe = () => {
@@ -14,14 +15,16 @@ export const CreateRecipe = () => {
     title: "",
     description: "",
     image: "",
-    category: "",
+    category: "beef",
+    difficulty: "beginner",
   };
 
   const [recipe, setRecipe] = useState(initialState);
   const [ingredients, setIngredients] = useState([""]);
   const [instructions, setInstructions] = useState([""]);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [imagePreview, setImagePreview] = useState("");
   const { setToast } = useToast();
+  const { errors, setAlert, removeAlert, type } = useAlert();
   const history = useHistory();
 
   const [createRecipe, { loading }] = useMutation(CREATE_RECIPE, {
@@ -30,14 +33,15 @@ export const CreateRecipe = () => {
       setToast("success", "Success", "Successfully recipe created");
       history.push(`/recipe/${id}`);
     },
-    onError(err) {
-      setToast(
-        "error",
-        "Error",
-        "Error in creating recipe. Please try again later."
-      );
+    onError(error) {
+      window.scrollTo(0, 0);
+      setAlert("error", error.graphQLErrors[0].extensions.exception.errors);
     },
   });
+
+  useEffect(() => {
+    return () => removeAlert();
+  }, []);
 
   const handleChange = (e) => {
     setRecipe({ ...recipe, [e.target.name]: e.target.value });
@@ -82,6 +86,10 @@ export const CreateRecipe = () => {
     }
   };
 
+  const handleCloseAlert = () => {
+    removeAlert();
+  };
+
   return (
     <div className={styles.createRecipe}>
       <Seo
@@ -90,6 +98,7 @@ export const CreateRecipe = () => {
       />
       {loading && <PageLoading />}
       <h2> Create your own recipe </h2>
+      <Alert type={type} alerts={errors} close={handleCloseAlert} />
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.group}>
           <label htmlFor="title"> Title: </label>

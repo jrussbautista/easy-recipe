@@ -1,6 +1,6 @@
 import { Recipe, User } from "../../models";
 import { authenticate } from "../../lib/utils";
-import { ApolloError } from "apollo-server";
+import { ApolloError, UserInputError } from "apollo-server";
 import { Cloudinary } from "../../lib/cloudinary";
 import isLength from "validator/lib/isLength";
 
@@ -13,33 +13,50 @@ const validateRecipeInput = ({
   instructions,
   ingredients,
 }) => {
+  const errors = [];
+
   if (!isLength(title, { min: 6 })) {
-    throw new Error("Title must be  under 6 characters");
+    const error = { message: "Title must be  under 6 characters" };
+    errors.push(error);
   }
 
-  if (!isLength(description, { max: 200 })) {
-    throw new Error("Description must not above 200 characters");
+  if (!isLength(description, { min: 6, max: 200 })) {
+    const error = {
+      message:
+        "Description must be under 6 characters and not above 200 characters",
+    };
+    errors.push(error);
   }
 
-  if (!isLength(category)) {
-    throw new Error("Category is required");
+  if (!isLength(category, { min: 3 })) {
+    const error = { message: "Category is required" };
+    errors.push(error);
   }
 
-  if (!isLength(difficulty)) {
-    throw new Error("Category is required");
+  if (!isLength(difficulty, { min: 3 })) {
+    const error = { message: "Difficulty is required" };
+    errors.push(error);
   }
 
-  if (!isLength(image)) {
-    throw new Error("Image is required");
+  if (!isLength(image, { min: 3 })) {
+    const error = { message: "Image is required" };
+    errors.push(error);
   }
 
   if (ingredients.length === 0) {
-    throw new Error("Ingredients is required");
+    const error = { message: "Ingredients is required" };
+    errors.push(error);
   }
 
   if (instructions.length === 0) {
-    throw new Error("Instructions is required");
+    const error = { message: "Instructions is required" };
+    errors.push(error);
   }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
 };
 
 export const recipeResolvers = {
@@ -75,17 +92,19 @@ export const recipeResolvers = {
   },
   Mutation: {
     createRecipe: async (root, { input }, { req }) => {
-      try {
-        const user = await authenticate(req);
-        validateRecipeInput(input);
-        input.author = user;
-        const image = await Cloudinary.upload(input.image);
-        input.image = image;
-        const recipe = await Recipe.create(input);
-        return recipe;
-      } catch (error) {
-        throw new ApolloError(`Failed to create recipe: ${error}`);
+      const user = await authenticate(req);
+
+      const { isValid, errors } = validateRecipeInput(input);
+
+      if (!isValid) {
+        throw new UserInputError("Errors", { errors });
       }
+
+      input.author = user;
+      const image = await Cloudinary.upload(input.image);
+      input.image = image;
+      const recipe = await Recipe.create(input);
+      return recipe;
     },
     deleteRecipe: async (root, { id }, { req }) => {
       try {

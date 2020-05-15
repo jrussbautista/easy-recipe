@@ -39,6 +39,35 @@ const validateRegisterInput = (input) => {
   };
 };
 
+const validateLoginInput = (input) => {
+  const errors = [];
+  const { email, password } = input;
+
+  if (email.trim() === "") {
+    const error = { field: "email", message: "Email is required" };
+    errors.push(error);
+  } else {
+    const regEx = /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+    if (!email.match(regEx)) {
+      const error = { field: "email", message: "Email is not a valid email" };
+      errors.push(error);
+    }
+  }
+
+  if (password.trim().length < 6) {
+    const error = {
+      field: "password",
+      message: "Password must have a 6 characters length",
+    };
+    errors.push(error);
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors,
+  };
+};
+
 const sendAuthResponse = (user) => {
   const token = user.getToken();
 
@@ -66,6 +95,10 @@ export const userResolvers = {
   },
   Mutation: {
     login: async (root, { input }) => {
+      const { isValid, errors } = validateLoginInput(input);
+      if (!isValid) {
+        throw new UserInputError("Errors", { errors });
+      }
       const { email, password } = input;
 
       const user = await User.findOne({ email }).select("+password");

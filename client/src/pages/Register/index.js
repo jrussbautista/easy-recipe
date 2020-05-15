@@ -92,7 +92,12 @@ export const Register = () => {
         </div>
         <div className={styles.group}>
           <div className={styles.btnWrapper}>
-            <Button title="Register" type="submit" loading={loading} />
+            <Button
+              title="Register"
+              type="submit"
+              loading={loading}
+              style={{ width: "100%" }}
+            />
           </div>
         </div>
       </form>
