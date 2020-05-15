@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, Link } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { REGISTER } from "../../lib/graphql/mutations";
 import { useAuth, useAlert } from "../../store";
@@ -91,6 +91,11 @@ export const Register = () => {
           </div>
         </div>
       </form>
+      <div className={styles.authLink}>
+        <p>
+          Already have an account? <Link to="/login">Login</Link> here.
+        </p>
+      </div>
     </div>
   );
 };

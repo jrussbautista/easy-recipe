@@ -45,8 +45,7 @@ const MobileMenu = ({ isOpen }) => {
               </li>
               <li>
                 <Link to="/register" className={styles.link}>
-                  {" "}
-                  Create An Account{" "}
+                  Sign Up
                 </Link>
               </li>
             </>

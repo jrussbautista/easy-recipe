@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, Link } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN } from "../../lib/graphql/mutations";
 import { useAuth, useAlert } from "../../store";
@@ -82,6 +82,11 @@ export const Login = () => {
           </div>
         </div>
       </form>
+      <div className={styles.authLink}>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link> here.
+        </p>
+      </div>
     </div>
   );
 };

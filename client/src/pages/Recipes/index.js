@@ -50,7 +50,7 @@ export const Recipes = () => {
     <div className={styles.container}>
       {total === 0 ? (
         <div className={styles.empty}>
-          <h2> No recipes Found. </h2>
+          <h2> No recipes found. Try to search for other recipes. </h2>
         </div>
       ) : (
         <>

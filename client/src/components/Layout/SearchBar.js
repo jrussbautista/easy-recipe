@@ -14,8 +14,9 @@ const SearchBar = ({ isOpen, close }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     close();
-    setSearch("");
-    history.push(`/recipes?search=${search}`);
+    if (search.trim().length > 0) {
+      history.push(`/recipes?search=${search}`);
+    }
   };
 
   return (
