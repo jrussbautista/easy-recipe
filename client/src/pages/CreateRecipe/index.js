@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { CREATE_RECIPE } from "../../lib/graphql/mutations/createRecipe";
 import { Button } from "../../components/Common";
-import { useToast, useAlert } from "../../store";
+import { useToast, useAlert, useAuth } from "../../store";
 import { BsFillImageFill } from "react-icons/bs";
 import Seo from "../../components/Seo";
 import PageLoading from "../../components/PageLoading";
@@ -23,6 +23,8 @@ export const CreateRecipe = () => {
   const [ingredients, setIngredients] = useState([""]);
   const [instructions, setInstructions] = useState([""]);
   const [imagePreview, setImagePreview] = useState("");
+
+  const { user } = useAuth();
   const { setToast } = useToast();
   const { errors, setAlert, removeAlert, type } = useAlert();
   const history = useHistory();

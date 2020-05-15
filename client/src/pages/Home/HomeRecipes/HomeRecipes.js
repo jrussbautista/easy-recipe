@@ -11,6 +11,7 @@ const PAGE_LIMIT = 12;
 const HomeRecipes = () => {
   const { data, loading, error } = useQuery(RECIPES, {
     variables: { page: 1, limit: PAGE_LIMIT },
+    fetchPolicy: "cache-and-network",
   });
 
   if (error) return <h2>Something went wrong</h2>;

@@ -6,6 +6,7 @@ import RecipeInfo from "./RecipeInfo/RecipeInfo";
 import RecipeInfoList from "./RecipeInfoList/RecipeInfoList";
 import RecipeSkeleton from "./RecipeSkeleton";
 import Seo from "../../components/Seo";
+import ErrorMessage from "../../components/ErrorMessage";
 import styles from "./Recipe.module.scss";
 
 export const Recipe = () => {
@@ -13,9 +14,9 @@ export const Recipe = () => {
 
   const { data, loading, error } = useQuery(RECIPE, { variables: { id } });
 
-  if (error) return <h2>Something went wrong</h2>;
-
   if (loading) return <RecipeSkeleton />;
+
+  if (error) return <ErrorMessage message="Recipe not found." />;
 
   const recipe = data.recipe;
 
