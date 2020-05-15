@@ -14,7 +14,12 @@ export const Recipe = () => {
 
   const { data, loading, error } = useQuery(RECIPE, { variables: { id } });
 
-  if (loading) return <RecipeSkeleton />;
+  if (loading)
+    return (
+      <div className={styles.container}>
+        <RecipeSkeleton />
+      </div>
+    );
 
   if (error) return <ErrorMessage message="Recipe not found." />;
 
