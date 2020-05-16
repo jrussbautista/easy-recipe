@@ -1,0 +1,18 @@
+.footer {
+  padding: 2rem 2rem 1rem 2rem;
+  text-align: center;
+  background-color: #fff;
+
+  .text {
+    font-size: 1.1rem;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.4;
+  }
+
+  .link {
+    padding: 0 0.5rem;
+  }
+}

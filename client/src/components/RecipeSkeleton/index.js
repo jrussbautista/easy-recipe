@@ -15,7 +15,7 @@ const RecipeSkeleton = ({ numbers = 10 }) => {
             <div className={styles.img}></div>
             <div className={styles.info}>
               <div className={styles.line} style={{ width: "100%" }}></div>
-              <div className={styles.line} style={{ width: "10rem" }}></div>
+              <div className={styles.line} style={{ width: "60%" }}></div>
             </div>
           </div>
         ))}

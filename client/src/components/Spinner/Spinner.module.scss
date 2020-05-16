@@ -3,20 +3,25 @@
   border-radius: 50%;
 }
 .loader {
-  margin: 60px auto;
+  margin: 0 auto;
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border-top: 0.5rem solid rgba(255, 255, 255, 0.5);
-  border-right: 0.5rem solid rgba(255, 255, 255, 0.5);
-  border-bottom: 0.5rem solid rgba(255, 255, 255, 0.5);
-  border-left: 0.5rem solid var(--color-primary);
+  border-top: 0.2rem solid rgba(255, 255, 255, 0.5);
+  border-right: 0.2rem solid rgba(255, 255, 255, 0.5);
+  border-bottom: 0.2rem solid rgba(255, 255, 255, 0.5);
+  border-left: 0.2rem solid var(--color-primary);
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
   -webkit-animation: load8 1.1s infinite linear;
   animation: load8 1.1s infinite linear;
+
+  &.invert {
+    border-left: 0.2rem solid #fff;
+  }
 }
+
 @-webkit-keyframes load8 {
   0% {
     -webkit-transform: rotate(0deg);

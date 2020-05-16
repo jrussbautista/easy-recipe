@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Spinner from "../../Spinner";
 import styles from "./Button.module.scss";
 
 export const Button = ({
@@ -26,7 +27,7 @@ export const Button = ({
           className={`${styles.btn} ${classType ? styles[classType] : ""}`}
           {...rest}
         >
-          {loading ? "..." : title}
+          {loading ? <Spinner invert size={1.5} /> : title}
         </button>
       )}
     </>

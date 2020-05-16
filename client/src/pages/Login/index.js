@@ -84,6 +84,7 @@ export const Login = () => {
               title="Log In"
               type="submit"
               loading={loading}
+              disabled={loading}
               style={{ width: "100%" }}
             />
           </div>
