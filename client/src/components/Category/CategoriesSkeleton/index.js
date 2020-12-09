@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./HomeCategorySkeleton.module.scss";
+import styles from "./CategoriesSkeleton.module.scss";
 
-const HomeCategorySkeleton = ({ numbers = 8 }) => {
+const CategorySkeleton = ({ numbers = 8 }) => {
   const categories = Array(numbers)
     .fill()
     .map((_, i) => i);
@@ -22,4 +22,4 @@ const HomeCategorySkeleton = ({ numbers = 8 }) => {
   );
 };
 
-export default HomeCategorySkeleton;
+export default CategorySkeleton;

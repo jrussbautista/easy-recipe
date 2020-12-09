@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
-import { CREATE_RECIPE } from "../../lib/graphql/mutations/createRecipe";
-import { Button } from "../../components/Common";
-import { useToast, useAlert, useAuth } from "../../store";
+import { CREATE_RECIPE } from "../../graphql/mutations/createRecipe";
+import Button from "../../components/Button";
+import { useToast, useAlert, useAuth } from "../../contexts";
 import { BsFillImageFill } from "react-icons/bs";
 import Seo from "../../components/Seo";
 import PageLoading from "../../components/PageLoading";

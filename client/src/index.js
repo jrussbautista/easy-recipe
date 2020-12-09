@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { AuthProvider, ToastProvider, AlertProvider } from "./store";
+import { AuthProvider, ToastProvider, AlertProvider } from "./contexts";
 import cookie from "js-cookie";
 
 const uri =

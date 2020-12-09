@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { RECIPES } from "../../lib/graphql/queries";
-import RecipeList from "../../components/RecipeList";
-import RecipeSkeleton from "../../components/RecipeSkeleton";
+import { RECIPES } from "../../graphql/queries";
+import RecipeList from "../../components/Recipe/RecipeList";
+import RecipeListSkeleton from "../../components/Recipe/RecipeListSkeleton";
 import ErrorMessage from "../../components/ErrorMessage";
 import Seo from "../../components/Seo";
 import Pagination from "../../components/Pagination";
@@ -27,7 +27,7 @@ export const Recipes = () => {
   if (loading) {
     return (
       <div className={styles.container}>
-        <RecipeSkeleton />
+        <RecipeListSkeleton />
       </div>
     );
   }

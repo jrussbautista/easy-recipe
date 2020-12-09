@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ErrorMessage.module.scss";
-import { Button } from "../Common";
+import Button from "../Button";
 
 const ErrorMessage = ({ message }) => {
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Spinner from "../../Spinner";
+import Spinner from "../Spinner";
 import styles from "./Button.module.scss";
 
-export const Button = ({
+const Button = ({
   title,
   onClick,
   loading = false,
@@ -33,3 +33,5 @@ export const Button = ({
     </>
   );
 };
+
+export default Button;

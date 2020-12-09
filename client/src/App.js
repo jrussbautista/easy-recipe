@@ -12,10 +12,10 @@ import {
   Register,
 } from "./pages";
 import Layout from "./components/Layout";
-import ScrollTop from "./components/ScrollTop";
-import { useAuth } from "./store";
+import ScrollTop from "./routing/ScrollToTop";
+import { useAuth } from "./contexts";
 import AppSkeleton from "./components/AppSkeleton";
-import ProtectedRoute from "./components/Routing/ProtectedRoute";
+import ProtectedRoute from "./routing/ProtectedRoute";
 
 function App() {
   const { loading } = useAuth();

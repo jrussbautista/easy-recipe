@@ -2,7 +2,7 @@ import React, { createContext, useContext, useReducer, useEffect } from "react";
 import reducer from "./authReducer";
 import { SET_USER, AUTH_ERROR, LOG_OUT } from "./authTypes";
 import { useMutation } from "@apollo/react-hooks";
-import { LOGIN_VIA_TOKEN } from "../../lib/graphql/mutations/loginViaToken";
+import { LOGIN_VIA_TOKEN } from "../../graphql/mutations/loginViaToken";
 import cookie from "js-cookie";
 
 const AuthContext = createContext();

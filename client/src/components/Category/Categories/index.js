@@ -1,20 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/react-hooks";
-import { CATEGORIES } from "../../../lib/graphql/queries/categories";
 import { capitalizeFirstLetter } from "../../../utils";
-import styles from "./HomeCategory.module.scss";
-import HomeCategorySkeleton from "../HomeCategorySkeleton";
+import styles from "./Categories.module.scss";
 
-const HomeCategory = () => {
-  const { loading, error, data } = useQuery(CATEGORIES);
-
-  if (loading) return <HomeCategorySkeleton />;
-
-  if (error) return <div></div>;
-
-  const { categories } = data;
-
+const Categories = ({ categories }) => {
   return (
     <div className={styles.category}>
       <ul className={styles.wrapper}>
@@ -39,4 +28,4 @@ const HomeCategory = () => {
   );
 };
 
-export default HomeCategory;
+export default Categories;

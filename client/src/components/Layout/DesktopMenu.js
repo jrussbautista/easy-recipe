@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../../store";
-import { Button } from "../Common";
+import { useAuth } from "../../contexts";
+import Button from "../Button";
 import { FiSearch } from "react-icons/fi";
 import styles from "./DesktopMenu.module.scss";
 

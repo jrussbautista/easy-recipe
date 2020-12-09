@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { CATEGORY } from "../../lib/graphql/queries/category";
-import RecipeList from "../../components/RecipeList";
-import RecipeSkeleton from "../../components/RecipeSkeleton";
+import { CATEGORY } from "../../graphql/queries/category";
+import RecipeList from "../../components/Recipe/RecipeList";
+import RecipeListSkeleton from "../../components/Recipe/RecipeListSkeleton";
 import ErrorMessage from "../../components/ErrorMessage";
 import Seo from "../../components/Seo";
 import styles from "./Category.module.scss";
@@ -19,7 +19,7 @@ export const Category = () => {
       <div className={styles.category}>
         <div className={styles.cover}></div>
         <div className={styles.container}>
-          <RecipeSkeleton />
+          <RecipeListSkeleton />
         </div>
       </div>
     );

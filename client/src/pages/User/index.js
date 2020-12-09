@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { USER } from "../../lib/graphql/queries/user";
-import UserDetails from "./UserDetails";
-import UserRecipes from "./UserRecipes";
-import ErrorMessage from "../../components/ErrorMessage";
-import RecipeSkeleton from "./UserSkeleton";
+import { USER } from "../../graphql/queries/user";
 import Pagination from "../../components/Pagination";
+import ErrorMessage from "../../components/ErrorMessage";
+import RecipeList from "../../components/Recipe/RecipeList";
 import Seo from "../../components/Seo";
+import UserDetails from "./UserDetails";
+import UserSkeleton from "./UserSkeleton";
 import styles from "./User.module.scss";
 
 const PAGE_LIMIT = 5;
@@ -24,7 +24,7 @@ export const User = () => {
     setPage(val);
   };
 
-  if (loading) return <RecipeSkeleton />;
+  if (loading) return <UserSkeleton />;
 
   if (error)
     return (
@@ -38,12 +38,11 @@ export const User = () => {
     <div className={styles.container}>
       <Seo title={`${user.name} - Easy Recipe`} />
       <UserDetails user={user} />
-
       {recipes.result.length === 0 ? (
         <h2 className={styles.empty}> No created recipe yet. </h2>
       ) : (
         <>
-          <UserRecipes recipes={recipes.result} />
+          <RecipeList />
           <Pagination
             onChange={handlePageChange}
             activePage={page}

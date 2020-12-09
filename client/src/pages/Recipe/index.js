@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { RECIPE } from "../../lib/graphql/queries";
+import { RECIPE } from "../../graphql/queries";
 import RecipeInfo from "./RecipeInfo/RecipeInfo";
 import RecipeInfoList from "./RecipeInfoList/RecipeInfoList";
 import RecipeSkeleton from "./RecipeSkeleton";

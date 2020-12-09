@@ -1,14 +1,13 @@
 import React from "react";
-import styles from "./RecipeSkeleton.module.scss";
+import styles from "./RecipeListSkeleton.module.scss";
 
-const RecipeSkeleton = ({ numbers = 10 }) => {
+const RecipeListSkeleton = ({ numbers = 10 }) => {
   const gridArr = Array(numbers)
     .fill()
     .map((_, i) => i + 1);
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.heading} style={{ width: "15rem" }}></div>
       <div className={styles.grid}>
         {gridArr.map((grid) => (
           <div className={styles.card} key={grid}>
@@ -24,4 +23,4 @@ const RecipeSkeleton = ({ numbers = 10 }) => {
   );
 };
 
-export default RecipeSkeleton;
+export default RecipeListSkeleton;

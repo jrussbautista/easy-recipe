@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, Redirect, Link } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
-import { LOGIN } from "../../lib/graphql/mutations";
-import { useAuth, useAlert } from "../../store";
-import { Button } from "../../components/Common";
+import { LOGIN } from "../../graphql/mutations";
+import { useAuth, useAlert } from "../../contexts";
+import Button from "../../components/Button";
 import Alert from "../../components/Alert";
 import Seo from "../../components/Seo";
 import styles from "./Login.module.scss";

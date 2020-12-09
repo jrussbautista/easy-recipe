@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../../store";
-import { Button } from "../Common";
+import { useAuth } from "../../contexts";
+import Button from "../Button";
 import styles from "./MobileMenu.module.scss";
 
 const MobileMenu = ({ isOpen }) => {
