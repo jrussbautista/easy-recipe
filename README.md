@@ -16,6 +16,7 @@
 - [x] Upload recipe image to cloudinary
 - [x] View recipe details
 - [x] View recipes based on category
+- [x] Search Recipe
 - [ ] Add to favorites
 - [ ] Delete and edit create recipe.
 
